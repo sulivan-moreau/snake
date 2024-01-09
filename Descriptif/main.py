@@ -84,8 +84,8 @@ def update_score_file(name_var, score):
 # Cette fonction va permettre de mettre le serpent en mouvement de manière automatique
  
 def move():
-    global dx,dy,x,y,eat,flag,f,serpent,coord_serpent,direction,coord_yeux,yeux,score,flag2
- 
+    global dx, dy, x, y, eat, flag, f, serpent, coord_serpent, direction, coord_yeux, yeux, score, flag2, name_var, nomJ, b
+    
     # Si le serpent mange une proie on l'allonge d'un carré et cela
     # en fonction de la direction afin que le nouveau carré soit bien
     # dessiné à la suite du dernier carré composant le serpent
@@ -251,9 +251,10 @@ def move():
  
         name_var = StringVar()
         name_var.set('Nobody')
-        nomJ = Entry(fen1, textvariable=name_var, bg='white')
-        nomJ.grid(row=9,column=1,sticky=N)
+        nomJ = Entry(fen1, textvariable=name_var, bg='white', fg='black')  # fg='black' définit la couleur du texte en noir
+        nomJ.grid(row=9, column=1, sticky=N)
         nomJ.focus_set()
+
  
         cmd_update_score = partial(update_score_file, name_var, score)
         b = Button(fen1, text="Envoyer", width=10, command=cmd_update_score)
